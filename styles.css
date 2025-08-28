@@ -1,0 +1,462 @@
+/* ==============================
+   Root Variables
+============================== */
+:root {
+  --c-red: #ff4d4d;
+  --c-orange: #ff9248;
+  --c-yellow: #ffd24d;
+  --c-green: #4dff88;
+  --c-blue: #4da6ff;
+  --c-purple: #b84dff;
+  --c-dark: #1a1a2e;
+  --c-light: #f0f4f8;
+}
+
+/* ==============================
+   Global Reset
+============================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--c-purple), var(--c-blue));
+  color: var(--c-dark);
+  position: relative;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Top-of-page Shine Bar
+============================== */
+.top-shine {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: topShine 2s ease-in-out infinite;
+  z-index: 1001;
+}
+@keyframes topShine {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* ==============================
+   Navigation
+============================== */
+.nav {
+  background: linear-gradient(90deg, var(--c-red), var(--c-orange));
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--c-light);
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.nav .logo svg {
+  width: 48px;
+  height: 48px;
+}
+.nav a {
+  color: var(--c-light);
+  margin-left: 1.2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+.nav a:hover {
+  opacity: 0.7;
+}
+
+/* SVG Logo Animation */
+#cap {
+  transform-origin: 50% 60%;
+  animation: placeCap 2s ease-in-out infinite;
+}
+@keyframes placeCap {
+  0% { transform: translateY(-30px) rotate(-20deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-30px) rotate(-20deg); }
+}
+.logo-svg:hover #cap { animation-duration: 1s; }
+
+/* ==============================
+   Banner
+============================== */
+.banner {
+  text-align: center;
+  padding: 5rem 1rem;
+  background: linear-gradient(45deg, var(--c-green), var(--c-yellow));
+  color: var(--c-dark);
+  position: relative;
+  overflow: hidden;
+}
+.banner h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.banner p {
+  font-size: 1.2rem;
+}
+.banner::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -50%;
+  width: 200%;
+  height: 2px;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  transform: rotate(25deg);
+  animation: bannerSparkle 3s infinite ease-in-out;
+}
+@keyframes bannerSparkle {
+  0% { left: -50%; opacity: 0; }
+  50% { left: 150%; opacity: 1; }
+  100% { left: 250%; opacity: 0; }
+}
+
+/* ==============================
+   Cassette (Books / Logo / Video)
+============================== */
+.cassette {
+  background: #4da6ff;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.cassette-slot {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.cassette-slot img,
+.cassette-slot iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+/* ==============================
+   Section
+============================== */
+.section {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: auto;
+  position: relative;
+}
+.section h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--c-light);
+  text-shadow: 1px 1px 2px var(--c-dark);
+  justify-content: center;
+}
+
+/* ==============================
+   About Card & Typing
+============================== */
+.about-card {
+  background: var(--c-dark);
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: var(--c-light);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.typing {
+  display: inline-block;
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: 0.05em;
+  border-right: 0.12em solid var(--c-light);
+  animation: typing 4s steps(60, end) forwards, blink-caret 0.75s step-end infinite;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: var(--c-light); }
+}
+.about-img {
+  text-align: center;
+  margin-top: 1rem;
+}
+.about-img img {
+  width: 220px;
+  animation: bookFlip 2.5s ease-in-out infinite;
+}
+
+/* ==============================
+   Courses
+============================== */
+#courses::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+  animation: coursesShine 2s linear infinite;
+}
+@keyframes coursesShine {
+  0% { left: -50%; }
+  100% { left: 150%; }
+}
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+.card {
+  position: relative;
+  background: var(--c-light);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 24px rgba(0,0,0,0.3);
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: skewX(-25deg);
+  animation: shineMove 2.5s linear infinite;
+}
+@keyframes shineMove {
+  0% { left: -150%; }
+  50% { left: 50%; }
+  100% { left: 250%; }
+}
+.card .card-header {
+  padding: 1.5rem;
+  text-align: center;
+  color: white;
+  font-size: 1.25rem;
+}
+.card:nth-child(1) .card-header { background: var(--c-red); }
+.card:nth-child(2) .card-header { background: var(--c-green); }
+.card:nth-child(3) .card-header { background: var(--c-blue); }
+.card .card-body {
+  padding: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--c-dark);
+}
+.card .btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  background: linear-gradient(45deg, var(--c-purple), var(--c-orange));
+  color: var(--c-light);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.card .btn:hover { opacity: 0.8; }
+
+/* ==============================
+   Announcement
+============================== */
+.announcement {
+  background: var(--c-dark);
+  color: var(--c-light);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.announcement p {
+  white-space: nowrap;
+  animation: slide 12s linear infinite;
+}
+@keyframes slide {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ==============================
+   Contact
+============================== */
+.email-decor {
+  position: relative;
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--c-light);
+  background: var(--c-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 8px var(--c-purple), inset 0 0 4px var(--c-purple);
+  animation: neonGlow 2s ease-in-out infinite alternate;
+}
+.email-decor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: skewX(-25deg);
+  animation: shineMove 2.5s linear infinite;
+}
+.phone {
+  color: var(--c-orange);
+  font-weight: 600;
+}
+
+/* ==============================
+   Footer
+============================== */
+footer {
+  background: linear-gradient(90deg, var(--c-yellow), var(--c-purple));
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--c-dark);
+  font-weight: 500;
+}
+footer .social a {
+  margin: 0 0.5rem;
+  color: var(--c-dark);
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+footer .social a:hover { transform: scale(1.2); }
+
+/* ==============================
+   Animations
+============================== */
+@keyframes bookFlip {
+  0% { transform: scale(1) rotateX(0deg); }
+  25% { transform: scale(1.05) rotateX(10deg); }
+  50% { transform: scale(1) rotateX(0deg); }
+  75% { transform: scale(1.05) rotateX(-10deg); }
+  100% { transform: scale(1) rotateX(0deg); }
+}
+
+/* ==============================
+   Responsive Design
+============================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .banner h1 { font-size: 2.4rem; }
+  .banner p { font-size: 1rem; }
+  .nav { flex-direction: column; align-items: flex-start; }
+  .nav a { margin: 0.5rem 0; display: block; }
+}
+
+/* Mobiles */
+@media (max-width: 600px) {
+  .banner { padding: 3rem 1rem; }
+  .banner h1 { font-size: 1.8rem; }
+  .banner p { font-size: 0.95rem; }
+  .cassette-slot { width: 120px; height: 120px; }
+  .courses-grid { grid-template-columns: 1fr; }
+  .section h2 { font-size: 1.6rem; }
+  .card .card-header { font-size: 1.1rem; }
+}
+
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px; 
+  z-index: 10;
+}
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: var(--c-light);
+  border-radius: 2px;
+  transition: 0.3s;
+ 
+}
+
+/* Nav links container */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(90deg, var(--c-red), var(--c-orange));
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 1rem 0;
+  }
+  .nav-links a {
+    margin: 10px 0;
+    text-align: center;
+  }
+  .nav-links.active { display: flex; }
+
+  /* Hamburger animation when active */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+}
