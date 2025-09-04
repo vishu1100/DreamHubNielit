@@ -170,6 +170,15 @@ body {
   border: none;
 }
 
+.text {
+  color: var(--c-light);
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px var(--c-dark);
+}
+
 /* ==============================
    Section
 ============================== */
